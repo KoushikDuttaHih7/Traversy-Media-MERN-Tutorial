@@ -1,13 +1,13 @@
 const jwt = require("jsonwebtoken");
-const ayancHandler = require("express-aync-handler");
+const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 
-const protect = ayancHandler(async (req, res, next) => {
+const protect = asyncHandler(async (req, res, next) => {
   let token;
 
   if (
-    req.header.authorization &&
-    req.header.authorization.startsWIth("Bearer")
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
   ) {
     try {
       // get token from header
